@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bạn đã bị hack!</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      margin-top: 100px;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      animation: shake 0.5s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(1px, 1px); }
+      25% { transform: translate(-1px, 2px); }
+      50% { transform: translate(-3px, 1px); }
+      75% { transform: translate(2px, -1px); }
+      100% { transform: translate(1px, 1px); }
+    }
+
+    .hidden {
+      display: none;
+      color: white;
+    }
+
+    .reveal {
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .btn {
+      background: lime;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+    #hack-image {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.5s ease-out;
+      z-index: 1000;
+      width: 400px;
+      border: 5px solid red;
+      box-shadow: 0 0 30px red;
+    }
+
+    #hack-image.show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="hack-text">⚠️ TÀI KHOẢN CỦA BAOTHY ĐÃ BỊ HACK ⚠️</h1>
+
+  <p class="hidden" id="reveal-text">
+    ĐANG CẬP NHẬT... TRONG 10s SẼ MẤT HẾT TẤT CẢ.
+  </p>
+
+  <button class="btn hidden" id="btn" onclick="showImage()">
+    NẾU KHÔNG MUỐN THÌ HÃY BẤM VÀO ĐÂY!
+  </button>
+
+  <!-- Ảnh xuất hiện bất ngờ giữa màn hình -->
+  <img id="hack-image" src="hack-image.jpg" alt="Bị hack">
+
+  <audio id="sfx" src="https://www.myinstants.com/media/sounds/windows-xp-error.mp3" autoplay></audio>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('hack-text').style.display = 'none';
+      document.getElementById('reveal-text').classList.remove('hidden');
+      document.getElementById('reveal-text').classList.add('reveal');
+      document.getElementById('btn').classList.remove('hidden');
+    }, 5000);
+
+    function showImage() {
+      const img = document.getElementById('hack-image');
+      img.classList.add('show');
+
+      // Phát thêm âm thanh bất ngờ (nếu muốn)
+      const surprise = new Audio('https://www.myinstants.com/media/sounds/vine-boom.mp3');
+      surprise.play();
+    }
+  </script>
+
+</body>
+</html>
